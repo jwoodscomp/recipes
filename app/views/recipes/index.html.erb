@@ -1,0 +1,30 @@
+<h1>Index of All Recipes</h1>
+<hr/>
+
+<% @recipes.each_with_index do |recipe, index| %>
+
+  <div class="row">
+    
+    <div class="col-sm-2">
+      <section class="chef-info center">
+        <%= gravatar_for recipe.chef, size: 100 %>
+        <h5>Chef name: <%= recipe.chef.chefname %></h5>
+        
+      </section>
+    </div>
+    
+    <div class="col-sm-8 well">
+      <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+      <p><%= recipe.summary %></p>
+      <p>
+        <span class="soft"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+      </p>
+    </div>
+    
+  </div>
+  
+  <% if index != @recipes.size - 1 %>
+  <hr/>
+  <% end %>
+
+<% end %>
