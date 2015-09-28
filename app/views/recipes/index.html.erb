@@ -1,5 +1,7 @@
 <%= render 'shared/page_title', title: 'Index of All Recipes' %>
 
+<%= will_paginate %>
+
 <% @recipes.each_with_index do |recipe, index| %>
 
   <div class="row">
@@ -16,7 +18,9 @@
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <p><%= recipe.summary %></p>
       <p>
-        <span class="soft"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+        <span class="quiet"><small>created <%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+        <br>
+        <span class="quiet"><small>updated <%= time_ago_in_words(recipe.updated_at) %> ago</small></span>
       </p>
       <%= render 'like', recipe: recipe %>
     </div>
@@ -32,3 +36,5 @@
   <% end %>
 
 <% end %>
+
+<%= will_paginate %>
