@@ -18,6 +18,7 @@
       <p>
         <span class="soft"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
       </p>
+      <%= render 'like', recipe: recipe %>
     </div>
     
     <div class="col-sm-4">
