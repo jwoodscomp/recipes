@@ -4,11 +4,17 @@
     <div class="nav-item">
       <%= link_to "Sign Up", register_path, class: "btn btn-default btn-warning" %>
     </div>
-    <div class="nav-item">
-      <%= link_to "Sign In", "", class: "btn btn-default btn-warning" %>
-    </div>
-    <div class="nav-item">
-      <%= link_to "New Recipe", new_recipe_path, class: "btn btn-default btn-warning" %>
-    </div>
+    <% if logged_in? %>
+        <div class="nav-item">
+          <%= link_to "New Recipe", new_recipe_path, class: "btn btn-default btn-warning" %>
+        </div>
+        <div class="nav-item">
+          <%= link_to "Sign Out", logout_path, class: "btn btn-default btn-danger" %>
+        </div>
+    <% else %>
+        <div class="nav-item">
+          <%= link_to "Sign In", login_path, class: "btn btn-default btn-warning" %>
+        </div>
+    <% end %>
   </div>
 </header>
