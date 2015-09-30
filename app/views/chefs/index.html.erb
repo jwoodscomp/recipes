@@ -1,0 +1,33 @@
+<%= render 'shared/page_title', title: 'Index of All Chefs' %>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= will_paginate %>
+  </div>
+</div>
+
+<% @chefs.each_with_index do |chef, index| %>
+
+  <div class="row">
+    
+    <div class="col-sm-6 col-sm-offset-3">
+      <section class="chef-info center">
+        <%= link_to gravatar_for(chef, size: 100), chef_path(chef) %>
+        <h5>Chef name: <%= chef.chefname %></h5>
+        
+      </section>
+    </div>
+    
+  </div>
+  
+  <% if index != @chefs.size - 1 %>
+  <hr/>
+  <% end %>
+
+<% end %>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= will_paginate %>
+  </div>
+</div>
